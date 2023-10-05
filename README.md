@@ -54,6 +54,61 @@ list(zip(numbers,letters,bools))
 #the resulting list is the size of the smaller list when sending lists of various lengths
 
 ```
-#### What are the conditions in dictionary comprehensions?
+#### [What are the conditions in dictionary comprehensions?](comprehensions/06_dictifs.py)
+**Conditions** are "walls" to let some variable or element be inserted in the dictionary. In this case we can impose the condition to the key and the value.
+Example:
+```python
+import random
+
+countries = ['ven', 'col', 'pe', 'mx', 'br', 'arg']
+
+  
+
+population_v1 = {country: random.randint(1, 100) for country in countries} # ← creating a dictionary from a list using random numbers
+
+print("population_v1: ", population_v1)
+
+  
+
+# population_v1: {'ven': 80, 'col': 32, 'pe': 54, 'mx': 20, 'br': 1, 'arg': 92}
+
+  
+
+# Adding the "if"
+
+  
+
+population_v2 = {country: population for (country, population) in population_v1.items() if population > 50}
+
+print("population_v2: ", population_v2)
+
+  
+
+# population_v2: {'col': 63, 'br': 62, 'arg': 54}
+
+# we used the function '.items()' to obtain a list of tuples of keys and values, then passed the conditional of greater than 50 to obtain only few elements
+
+  
+
+# Now using strings
+
+  
+
+text = "Hello, I am Sergio"
+
+  
+
+unique = {char: char.upper() for char in text if char in 'aeiou'} # ← each vowel found in the text will be transformed in upper case
+
+print("unique: ", unique) 
+# unique: {'e': 'E', 'o': 'O', 'a': 'A', 'i': 'I'}
+```
 
 #### List vs Sets vs Tuples
+
+|              |**List** |**Tuple** |**Set** |
+|--------------|---- |----- |----|
+| *Mutable*        |✅  |❌    | ✅ |
+| *Ordered*        | ✅ | ✅   | ❌ |
+| *Indexing / Slicing* | ✅  | ✅   |❌ |
+| *Duplicate elements*| ✅ | ✅   | ❌ |
